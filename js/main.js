@@ -257,6 +257,7 @@ function mostrarSiguienteRuta() {
         mostrarPopupRuta(indexRuta);
     } else {
         mostrarAlertaAvion(); // Mostrar la alerta con el avión volando
+        
     }
 }
 
