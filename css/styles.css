@@ -6,6 +6,7 @@ html, body {
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
     background-color: pink !important;
+    overflow-x: hidden; /* Evita que el botón se salga de la pantalla */
 }
 
 
@@ -27,18 +28,35 @@ html, body {
     }
 }
 
+#Encab {
+    flex-grow: 1; /* Hace que el texto ocupe el espacio disponible */
+    text-align: center; /* Centra el contenido */
+    display: flex;
+    justify-content: center;
+}
+
 #Encab a {
-    padding-left: 92px;
+    padding: 0; /* Elimina el padding izquierdo innecesario */
 }
 
 #Encab a::before {
     content: "❤️ Feliz San Valentín ❤️"; /* Texto inicial */
     animation: cambiarCorazon 0.36s infinite alternate;
     font-family: "Dancing Script", cursive, sans-serif; 
-    font-size: 28px;
+    font-size: 24px; /* Ajustado para móviles */
     font-weight: bold;
     color: #722f37;
+    display: block;
+    text-align: center; /* Centra el texto */
 }
+
+.navbar-toggler {
+    position: absolute;
+    right: 15px; /* Ajusta la posición hacia la derecha */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 
 
 /* Secciones */
@@ -89,6 +107,12 @@ section {
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: background 0.3s ease, transform 0.2s;
+    z-index: 1000;
+    display: flex; /* Asegura visibilidad */
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
 }
 
 #btn-home:hover {
@@ -96,9 +120,16 @@ section {
     transform: scale(1.1);
 }
 
-#btn-home:hover {
-    background-color: #ff3b61;
-    transform: scale(1.1);
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    #btn-home {
+        width: 45px; 
+        height: 45px;
+        font-size: 22px;
+        bottom: 10px; /* Un poco más arriba en pantallas pequeñas */
+        right: 15px; /* Ajusta posición en móviles */
+        display: flex; /* Asegura que siempre sea visible */
+    }
 }
 
 
@@ -160,46 +191,62 @@ section {
     }
 }
 
-/* Estilos generales para el alert */
+/* Contenedor del alert */
 .custom-alert {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 0, 0, 0.9); /* Fondo rojo */
     width: 80%;
-    max-width: 400px;
+    max-width: 350px;
     padding: 10px;
     border-radius: 12px;
-    display: none; /* Inicialmente está oculto */
-    z-index: 1000;
+    display: none; /* Oculto inicialmente */
+    z-index: 10; /* Se mantiene encima del GIF, pero dentro del section */
+    box-sizing: border-box;
 }
 
+/* Contenido del alert */
 .custom-alert-content {
     background-color: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 12px;
     text-align: center;
 }
 
+/* Texto */
 .custom-alert p {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
     color: #333;
 }
 
+/* Botón */
 .custom-alert button {
     background-color: #FF5C8D;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 8px 12px;
+    font-size: 14px;
     cursor: pointer;
     border-radius: 5px;
 }
 
 .custom-alert button:hover {
     background-color: #ff3c6d;
+}
+
+/* Ajustes en móviles */
+@media (max-width: 600px) {
+    .custom-alert {
+        width: 90%;
+        max-width: 280px;
+        min-width: 200px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 
 
@@ -282,6 +329,7 @@ section {
     border: 2px solid #ff6b81; /* Borde rosa más fuerte */
     border-radius: 10px; /* Bordes redondeados */
 }
+/* Contenedor principal del libro */
 .book-container {
     display: flex;
     justify-content: center;
@@ -319,20 +367,32 @@ section {
     right: 0;
 }
 
-.title {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.buttons {
-    position: absolute;
-    bottom: 5px;
-    width: 100%;
-    display: flex;
-    justify-content: right;
-    padding-right: 30px;
-    padding-bottom: 7px;
+/* Diseño responsivo para móviles */
+@media screen and (max-width: 768px) {
+    .book {
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .page {
+        width: 100%;
+        position: static;
+        height: auto;
+        border: none;
+        box-shadow: none;
+    }
+    
+    .left {
+        border-right: none;
+        padding-bottom: 20px;
+    }
+    
+    .right {
+        border-top: 2px solid #8b5a2b;
+        padding-top: 20px;
+    }
 }
 
 .title-diario{
@@ -343,86 +403,91 @@ section {
 }
 .parisienne-regular {
     font-family: "Parisienne", serif;
-    font-weight: 400;
+    font-weight: auto;
     font-style: normal;
-    font-size: 1.5em;
-    text-align: justify;
+    font-size: 1.4em;
+    text-align: center;
+    
 }
-/* Contenedor general que usa Flexbox */
+
+/* Contenedor general para la página izquierda */
 .page.left {
     display: flex;
-    flex-direction: column; /* Organiza los elementos en columna (de arriba a abajo) */
-    justify-content: center; /* Centra los elementos verticalmente dentro de .page.left */
-    align-items: center; /* Centra los elementos horizontalmente */
-    height: 100%; /* Asegura que el contenedor tenga altura completa para alinear verticalmente */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
-/* Estilo para el contenedor ovalado */
+.page.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;  /* Asegúrate de que haya un poco de espacio en el contenedor */
+    height: 100%; /* O usar 'auto' si el contenido es variable */
+    overflow: hidden; /* Evita el desbordamiento */
+}
+/* Imagen ovalada en la izquierda */
 .image-container-old {
-    width: 300px;
-    height: 380px;
-    border-radius: 50%; /* Forma ovalada */
-    overflow: hidden; /* Para que la imagen no sobresalga del contenedor */
-    margin: 0 auto; /* Centrar el contenedor */
+    width: 270px;
+    max-height: 360px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilo para la imagen con filtro sepia */
 .image-with-filter {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Mantiene la proporción y cubre el contenedor */
-    filter: sepia(100%); /* Aplica el filtro sepia */
+    object-fit: cover;
+    filter: sepia(100%);
 }
-.Frase-inf{
-    padding-top: 17px;
-}
-/* Estilo para el contenedor de la imagen en la página derecha con marco antiguo */
+
+/* Contenedor de imagen derecha con marco */
 .img-cont-right {
-    width: 300px; /* Mismo tamaño que la imagen original */
-    height: 380px; /* Mismo tamaño que la imagen original */
+    width: 300px;
+    max-height: 380px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     margin: 0 auto;
-    /* Agregar un borde con un color dorado o envejecido y un poco de sombra */
-    border: 6px solid #D4AF37; /* Borde dorado para el marco antiguo */
+    border: 6px solid #D4AF37;
     border-radius: 7px;
-    box-shadow: 0 0px 14px rgba(0, 0, 0, 0.2), 0 0 18px rgba(116, 99, 3, 0.452); /* Sombra para dar profundidad */
+    box-shadow: 0 0px 14px rgba(0, 0, 0, 0.2), 0 0 18px rgba(116, 99, 3, 0.452);
 }
 
-/* Estilo para la imagen dentro del contenedor */
 .img-cont-right img {
-    width: 100%; /* La imagen ocupa el 100% del contenedor */
-    height: 100%; /* La imagen ocupa el 100% del contenedor */
-    object-fit: cover; /* Mantiene la proporción de la imagen, cubriendo el contenedor */
-    border-radius: 0px; /* Esquinas de la imagen redondeadas para combinar con el marco */
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 0px;
 }
 
-/* Alerta personalizada de avión */
-.custom-alert-avion {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(83, 188, 236, 0.8); /* Fondo azul, puedes cambiar a cualquier color */
-    width: 80%;
-    max-width: 450px;
-    padding: 12px;
-    border-radius: 15px;
-    display: none; /* Inicialmente está oculta */
-    z-index: 1000;
+/* Botones dentro de la página derecha */
+.buttons {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding-right: 30px;
+    padding-bottom: 7px;
+    white-space: nowrap
 }
 
-.custom-alert-avion-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
+@media screen and (max-width: 768px) {
+    .buttons {
+        position: static;
+        justify-content: center;
+        padding: 10px 0;
+    }
 }
+
 
 #avion-volando {
     animation: vuelo 4s linear infinite;

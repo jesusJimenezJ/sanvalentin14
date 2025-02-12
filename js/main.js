@@ -48,7 +48,7 @@ document.addEventListener("scroll", function () {
 
     const homeRect = homeSection.getBoundingClientRect();
     
-    if (homeRect.top >= 0 && homeRect.bottom <= window.innerHeight) {
+    if (homeRect.top < window.innerHeight && homeRect.bottom > 0) {
         animarCorazones(); // Activa corazones cuando estamos en Home
     }
 });
@@ -88,19 +88,15 @@ function cerrarAlerta() {
     customAlert.style.display = 'none'; // Oculta el alert
 }
 
-// Función para desplazarse al principio de la página
-function irAlHome() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    // Esperar un poco para asegurarnos de que se vea el home antes de activar corazones
-    setTimeout(animarCorazones, 500);
-}
-
 
 function irAlHome() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Cambia la URL sin recargar
+    history.pushState(null, null, "#home");
 
-    // Esperar un poco para asegurarnos de que se vea el home antes de activar corazones
+    // Hace scroll suave al home
+    document.getElementById("home").scrollIntoView({ behavior: "smooth" });
+
+    // Espera un poco antes de activar corazones
     setTimeout(animarCorazones, 500);
 }
 
@@ -244,7 +240,7 @@ function cerrarAlertaAvion() {
     alertDiv.style.display = "none";
 }
 
-// Ejemplo de cómo integrar la alerta personalizada en tu código
+// integrar la alerta personalizada en tu código
 function mostrarSiguienteRuta() {
     if (indexRuta < rutas.length - 1) {
         // Ocultar la ruta anterior
@@ -500,3 +496,5 @@ nextBtn.addEventListener("click", () => {
 // Mostrar la primera anécdota al cargar y actualizar los botones
 showPage(currentPage);
 updateButtons();  // Asegura que los botones estén correctamente actualizados al principio
+
+
