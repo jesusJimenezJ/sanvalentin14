@@ -1,0 +1,504 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    background-color: pink !important;
+}
+
+
+
+/* Menú */
+.navbar-pink {
+    background-color: #ff6b81 !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+@keyframes cambiarCorazon {
+    0%, 50% {
+        content: "❤️ Feliz San Valentín ❤️";
+    }
+    50.01%, 100% {
+        content: "💖 Feliz San Valentín 💖";
+    }
+}
+
+#Encab a {
+    padding-left: 92px;
+}
+
+#Encab a::before {
+    content: "❤️ Feliz San Valentín ❤️"; /* Texto inicial */
+    animation: cambiarCorazon 0.36s infinite alternate;
+    font-family: "Dancing Script", cursive, sans-serif; 
+    font-size: 28px;
+    font-weight: bold;
+    color: #722f37;
+}
+
+
+/* Secciones */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+    text-align: center;
+    background-color: #ffccd5;
+}
+
+/* Home */
+#home {
+    background-color: #ffccd5;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Contenedor de corazones */
+#home .heart-container {
+    position: absolute;
+    top: 01%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 40%;
+    pointer-events: none;
+    z-index: 0;
+    padding-bottom: 50px;
+}
+
+#btn-home {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff6b81;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+#btn-home:hover {
+    background-color: #ff3b61;
+    transform: scale(1.1);
+}
+
+#btn-home:hover {
+    background-color: #ff3b61;
+    transform: scale(1.1);
+}
+
+
+
+#galeria {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    text-align: center;
+    background-color: #ffccd5;
+    width: 100%;
+    position: relative;
+}
+
+
+
+/* Contenedor de la pregunta con GIF */
+.pregunta-container {
+    width: 320px; /* Ancho fijo */
+    height: 350px;
+    background: transparent;
+    padding: 20px;
+    position: relative;
+    z-index: 10; /* Evita que los corazones lo superpongan */
+    padding-top: 120px;
+}
+
+/* Ajuste de tamaño uniforme para los GIFs */
+.gif {
+    width: 200px; /* Se ajusta al tamaño del contenedor */
+    height: 200px; /* Mantiene la misma altura */
+    object-fit: contain; /* Ajusta la imagen sin deformarla */
+    border-radius: 10px;
+}
+
+
+/* Corazones animados */
+.heart {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0;
+    animation: moveHeart 1.2s infinite ease-in-out;
+    z-index: -1;
+}
+
+/* Animación */
+@keyframes moveHeart {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+/* Estilos generales para el alert */
+.custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 0, 0, 0.9); /* Fondo rojo */
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 12px;
+    display: none; /* Inicialmente está oculto */
+    z-index: 1000;
+}
+
+.custom-alert-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.custom-alert p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.custom-alert button {
+    background-color: #FF5C8D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.custom-alert button:hover {
+    background-color: #ff3c6d;
+}
+
+
+.info-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+    width: 60%;
+    max-width: 500px;
+}
+.d-none {
+    display: none;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#carouselImages, #carouselVideos {
+    max-width: 100%;
+    height: auto;  
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.carousel-item img, 
+.carousel-item video {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover; /* Ajusta la imagen sin recortarla */
+    object-position: center;
+}
+
+@media (max-width: 768px) {
+    .carousel-item img,
+    .carousel-item video {
+        height: auto;
+        max-height: 500px; 
+    }
+}
+
+.carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.btn-link {
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    color: #ff0000 !important; /* Rojo */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+.card-header {
+    display: flex;
+    justify-content: center;
+}
+.card {
+    background-color: #ffe4e1; /* Un rosa claro */
+    border: 2px solid #ff6b81; /* Borde rosa más fuerte */
+    border-radius: 10px; /* Bordes redondeados */
+}
+.book-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    padding-bottom: 40px;
+}
+
+.book {
+    width: 1200px;
+    height: 680px;
+    display: flex;
+    position: relative;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.page {
+    width: 50%;
+    height: 100%;
+    background: #F5F5DC;
+    border: 2px solid #8b5a2b;
+    padding: 20px;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    transition: transform 1s;
+}
+
+.left {
+    left: 0;
+    border-right: 2px solid #8b5a2b;
+}
+
+.right {
+    right: 0;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding-right: 30px;
+    padding-bottom: 7px;
+}
+
+.title-diario{
+    font-family: "MedievalSharp";
+    font-size: 42px;
+    font-style: italic;
+    padding-bottom: 20px;
+}
+.parisienne-regular {
+    font-family: "Parisienne", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    text-align: justify;
+}
+/* Contenedor general que usa Flexbox */
+.page.left {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna (de arriba a abajo) */
+    justify-content: center; /* Centra los elementos verticalmente dentro de .page.left */
+    align-items: center; /* Centra los elementos horizontalmente */
+    height: 100%; /* Asegura que el contenedor tenga altura completa para alinear verticalmente */
+}
+/* Estilo para el contenedor ovalado */
+.image-container-old {
+    width: 300px;
+    height: 380px;
+    border-radius: 50%; /* Forma ovalada */
+    overflow: hidden; /* Para que la imagen no sobresalga del contenedor */
+    margin: 0 auto; /* Centrar el contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para la imagen con filtro sepia */
+.image-with-filter {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene la proporción y cubre el contenedor */
+    filter: sepia(100%); /* Aplica el filtro sepia */
+}
+.Frase-inf{
+    padding-top: 17px;
+}
+/* Estilo para el contenedor de la imagen en la página derecha con marco antiguo */
+.img-cont-right {
+    width: 300px; /* Mismo tamaño que la imagen original */
+    height: 380px; /* Mismo tamaño que la imagen original */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 auto;
+    /* Agregar un borde con un color dorado o envejecido y un poco de sombra */
+    border: 6px solid #D4AF37; /* Borde dorado para el marco antiguo */
+    border-radius: 7px;
+    box-shadow: 0 0px 14px rgba(0, 0, 0, 0.2), 0 0 18px rgba(116, 99, 3, 0.452); /* Sombra para dar profundidad */
+}
+
+/* Estilo para la imagen dentro del contenedor */
+.img-cont-right img {
+    width: 100%; /* La imagen ocupa el 100% del contenedor */
+    height: 100%; /* La imagen ocupa el 100% del contenedor */
+    object-fit: cover; /* Mantiene la proporción de la imagen, cubriendo el contenedor */
+    border-radius: 0px; /* Esquinas de la imagen redondeadas para combinar con el marco */
+}
+
+/* Alerta personalizada de avión */
+.custom-alert-avion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(83, 188, 236, 0.8); /* Fondo azul, puedes cambiar a cualquier color */
+    width: 80%;
+    max-width: 450px;
+    padding: 12px;
+    border-radius: 15px;
+    display: none; /* Inicialmente está oculta */
+    z-index: 1000;
+}
+
+.custom-alert-avion-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+#avion-volando {
+    animation: vuelo 4s linear infinite;
+}
+
+#avion-img {
+    width: 40px;
+    height: 40px;
+    animation: volar 4s linear infinite;
+}
+
+#celebracion-icono {
+    font-size: 40px; /* Tamaño más grande del icono de celebración */
+    margin-top: -30px; /* Más arriba para evitar que tape el botón */
+    opacity: 0;
+    animation: celebracion 3s ease-out forwards; /* Se activará cuando el avión llegue a su destino */
+    animation-delay: 3.8s; /* El icono aparecerá después del vuelo */
+}
+
+.custom-alert-avion p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.custom-alert-avion button {
+    background-color: #FF5C8D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.custom-alert-avion button:hover {
+    background-color: #ff3c6d;
+}
+
+/* Animación del vuelo del avión */
+@keyframes volar {
+    0% {
+        transform: translateX(-150%);
+    }
+    100% {
+        transform: translateX(150%);
+    }
+}
+
+/* Animación del icono de celebración */
+@keyframes celebracion {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+/* Transición para que el icono de celebración se muestre después de la animación del avión */
+@keyframes celebracion {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,144 @@
+{
+    "viajes": [
+        {
+            "id": 1,
+            "titulo": "Primer Viaje - Lunahuaná",
+            "imagen": "https://i.postimg.cc/5ypNFRdT/20220108-074552.jpg",
+            "ruta": [
+                { "lat": 40.7128, "lng": -74.0060 },
+                { "lat": 48.8566, "lng": 2.3522 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://wallpapercave.com/wp/wp11562885.jpg" },
+                { "tipo": "imagen", "url": "https://th.bing.com/th/id/R.4e312752589af6f4da3d6cf28e2f9775?rik=6XvqwkBl8ue5ew&riu=http%3a%2f%2fphotos.wikimapia.org%2fp%2f00%2f03%2f67%2f44%2f20_full.jpg&ehk=tZ93i9NWQQUrD9mGvJIMN0tkrsdq1m1xzNI%2bJhdcGys%3d&risl=&pid=ImgRaw&r=0" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/jNQXAC9IVRw" }
+            ]
+        },
+        {
+            "id": 2,
+            "titulo": "Segundo Viaje - Los Ángeles a Londres",
+            "imagen": "https://th.bing.com/th/id/R.a0a0886f99e3837d220d33bf400f548d?rik=bD4TNRcv6Myd8g&riu=http%3a%2f%2fevasion-online.com%2fimagearticle%2f2015%2f07%2ftower-bridge-a-londres.jpg&ehk=oS1BchV6ijXaG9BDOUg5k5SteIPjs9F7Pzf%2fEjpeHzg%3d&risl=&pid=ImgRaw&r=0",
+            "ruta": [
+                { "lat": 34.0522, "lng": -118.2437 },
+                { "lat": 51.5074, "lng": -0.1278 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?london" },
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?bigben" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/3JZ_D3ELwOQ" }
+            ]
+        },
+        {
+            "id": 3,
+            "titulo": "Tercer Viaje - Tokio a Roma",
+            "imagen": "https://th.bing.com/th/id/OIP.cwAE9oQnom6Y7eLbtD6udwHaE8?rs=1&pid=ImgDetMain",
+            "ruta": [
+                { "lat": 35.6895, "lng": 139.6917 },
+                { "lat": 41.9028, "lng": 12.4964 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?rome" },
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?colosseum" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/tgbNymZ7vqY" }
+            ]
+        },
+        {
+            "id": 4,
+            "titulo": "Cuarto Viaje - Sydney a Berlín",
+            "imagen": "https://th.bing.com/th/id/R.882722cabb4af6d54eb0ca3f3c11f4be?rik=Rebzwrur%2fR%2fLTA&riu=http%3a%2f%2fwww.sydneycafes.com.au%2fwp-content%2fuploads%2f2016%2f11%2fSydney-Harbour.jpg&ehk=DTkFDl4SNzsR2CHp9aQEGqMp8X4kCc%2fLCXUoEAzKISI%3d&risl=&pid=ImgRaw&r=0",
+            "ruta": [
+                { "lat": -33.8688, "lng": 151.2093 },
+                { "lat": 52.5200, "lng": 13.4050 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?berlin" },
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?brandenburg" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/L_jWHffIx5E" }
+            ]
+        },
+        {
+            "id": 5,
+            "titulo": "Quinto Viaje - Río de Janeiro a Moscú",
+            "imagen": "https://th.bing.com/th/id/R.58c7cd07743a65337c18c919bcaa1fc5?rik=TJqBfegI01c7Gw&riu=http%3a%2f%2fwww.getsready.com%2fwp-content%2fuploads%2f2016%2f08%2fRio-de-Janeiro-an-amazing-part-in-brazil.jpg&ehk=Dx7YdRlKPvbF%2fRsGg%2fGXOhSNQyYcyiqFKpqr7IoS3s8%3d&risl=&pid=ImgRaw&r=0",
+            "ruta": [
+                { "lat": -22.9068, "lng": -43.1729 },
+                { "lat": 55.7558, "lng": 37.6173 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?moscow" },
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?kremlin" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/tgbNymZ7vqY" }
+            ]
+        },
+        {
+            "id": 6,
+            "titulo": "Sexto Viaje - Buenos Aires a El Cairo",
+            "imagen": "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/v1555352156/shape/mentalfloss/istock_000056850756_small.jpg?itok=uriJDB5a",
+            "ruta": [
+                { "lat": -34.6037, "lng": -58.3816 },
+                { "lat": 30.0444, "lng": 31.2357 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?cairo" },
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?pyramids" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/ZZ5LpwO-An4" }
+            ]
+        },
+        {
+            "id": 7,
+            "titulo": "Séptimo Viaje - Bangkok a Madrid",
+            "imagen": "https://th.bing.com/th/id/R.7398b7ad7211a614860ce01892d5fb84?rik=t3QZ6bQfFfqaXA&riu=http%3a%2f%2fstatic.asiawebdirect.com%2fm%2fbangkok%2fportals%2fbangkok-com%2fhomepage%2fmost-popular-historical%2fpagePropertiesImage%2fbangkok-best-things-to-do.jpg.jpg&ehk=zdP2YP5ntQ6MT1jcQuQTY7BD8psBLKoyP7dzfrCKwXE%3d&risl=&pid=ImgRaw&r=0",
+            "ruta": [
+                { "lat": 13.7563, "lng": 100.5018 },
+                { "lat": 40.4168, "lng": -3.7038 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?madrid" },
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?plazamayor" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/Sagg08DrO5U" }
+            ]
+        },
+        {
+            "id": 8,
+            "titulo": "Octavo Viaje - Ciudad del Cabo a Pekín",
+            "imagen": "https://th.bing.com/th/id/R.1f94ea896c2a15ca2166adcb2420a444?rik=SnB49%2fToVNNYWA&riu=http%3a%2f%2fcms.inspirato.com%2fmedia%2f5682933%2fLos-Cabos_Dest_12552288_NoBoats.jpg&ehk=TjxjQRerawgH012ThuDqh%2fk5bQxmCY3%2bM6YTsL1Z7Dw%3d&risl=&pid=ImgRaw&r=0",
+            "ruta": [
+                { "lat": -33.9249, "lng": 18.4241 },
+                { "lat": 39.9042, "lng": 116.4074 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?beijing" },
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?greatwall" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/HQmmM_qwG4k" }
+            ]
+        },
+        {
+            "id": 9,
+            "titulo": "Noveno Viaje - Dubái a Toronto",
+            "imagen": "https://th.bing.com/th/id/OIP.S2LYPEdx9vLp5p0pgBoAAQHaEK?rs=1&pid=ImgDetMain",
+            "ruta": [
+                { "lat": 25.276987, "lng": 55.296249 },
+                { "lat": 43.65107, "lng": -79.347015 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?toronto" },
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?cn-tower" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/YQHsXMglC9A" }
+            ]
+        },
+        {
+            "id": 10,
+            "titulo": "Décimo Viaje - Estambul a Ámsterdam",
+            "imagen": "https://www.urlaubsguru.de/wp-content/uploads/2017/07/Zuiderkerk-in-Amsterdam-iStock-528503566-2_titel-1.jpg",
+            "ruta": [
+                { "lat": 41.0082, "lng": 28.9784 },
+                { "lat": 52.3676, "lng": 4.9041 }
+            ],
+            "galeria": [
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?amsterdam" },
+                { "tipo": "imagen", "url": "https://source.unsplash.com/featured/?canals" },
+                { "tipo": "video", "url": "https://www.youtube.com/embed/2Vv-BfVoq4g" }
+            ]
+        }
+    ]
+}

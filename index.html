@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>San Valentín</title>
+    
+        <!-- Estilos -->
+        <link rel="stylesheet" href="css/styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.awesome-markers/2.0.4/leaflet.awesome-markers.css">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+        <!-- Scripts -->
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.awesome-markers/2.0.4/leaflet.awesome-markers.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.6.0/leaflet.polylineDecorator.min.js"></script>
+        <script defer src="https://unpkg.com/leaflet.curve"></script>
+        <script defer src="https://rawgit.com/elfalem/Leaflet.curve/master/src/leaflet.curve.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        
+    </head>
+    
+<body>
+    <header>
+        <nav class="navbar navbar-center-lg navbar-pink">
+            <div class="container-fluid">
+                <div class="mx-auto text-center">
+                    <div id="Encab">
+                        <a class="navbar-brand fw-bold" href="#"></a>
+                    </div>
+                </div>                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Feliz día</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#galeria">Nuestra Galería</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#nuestros-viajes">Nuestros viajes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#anecdotas">Nuestras Anécdotas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#destino">Nuestro Nuevo Destino</a></li>
+                    </ul>
+                    <div class="icono-pareja">
+                        <div class="heart-shape"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <section id="home" class="container mt-4 text-center">
+        <div class="d-flex justify-content-center mb-2">
+            <div class="heart-container"></div> 
+        </div>
+    
+        <div class="pregunta-container mx-auto">
+            <p class="fs-4">¿Quieres pasar el San Valentín juntos?</p>
+            <img id="gif-gato" 
+                src="https://www.univision.com/proxy/api/cached/picture?href=https%3A%2F%2Fuvn-brightspot.s3.amazonaws.com%2Fassets%2Fvixes%2Fbtg%2Ftumblr_lta61d2bgl1r4ghkoo1_500_0.gif&width=0&height=0&ratio_width=1240&ratio_height=698&format=webp" 
+                alt="Gato con ojos brillosos" class="gif img-fluid mb-3">
+            
+            <div>
+                <button class="btn btn-success mx-2" onclick="responder('si')">Sí 💕</button>
+                <button class="btn btn-danger mx-2" onclick="responder('no')">No 💔</button>
+            </div>
+        </div>
+        <button id="btn-home" onclick="irAlHome()">🏠</button>
+        
+        <!-- Contenedor del alert personalizado -->
+        <div id="custom-alert" class="custom-alert">
+            <div class="custom-alert-content">
+                <p id="alert-message"></p>
+                <button id="alert-button" onclick="cerrarAlerta()">Cerrar</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="galeria" class="container mt-4 text-center"> 
+        <h2 class="text-center ">Nuestra galería</h2>
+        
+        <!-- Carrusel de Imágenes -->
+        <div id="carouselImages" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://i.postimg.cc/BvS6b9VT/IMG-2814.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/5ypNFRdT/20220108-074552.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/1zSTL5N0/20220220-063655.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/7Z4ryNFT/Whats-App-Image-2025-02-11-at-12-37-34-PM.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/YSVXtrvy/20220108-111319.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/hvMTPsCP/20220108-164119.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/NFLfmxs0/20220109-124709.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/fWpLcxY3/20220219-094624.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/prgx8bc0/20220219-152930.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/3RqH5QhK/20220318-082547.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/yYcWPvhJ/20220318-204849.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/NMKjr4fj/20221012-201727.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/bNxNbd8k/20221012-220721.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/d01qzBCj/20230122-082744.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/dVQvyB5c/20230122-105330.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/1tFZQY3w/20230122-115450.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/wxJqQjLq/20220220-144819.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/76zk9KCs/20220108-091729.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/rpB6D5hS/20220731-013900.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/gJV7rQLW/20230122-102539.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/cJY952mn/20230122-094035.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/vHN08b2n/20230121-205826.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/QCMqsypS/20230101-175732.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/JnpbT59X/20230101-000256.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/8cqf3Kw7/20221130-225804.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/K8hgDWRV/20221119-222927.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/RFYW6skg/20220415-094810.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/52JS2yq6/20220224-170404.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/bvCxgTXt/20221026-100031.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/7ZqSycwz/20220319-232858.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/s2XSMhBD/20220730-140517.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/CxMn2qsH/20220422-205633.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/KYwM9Xyh/Whats-App-Image-2025-02-11-at-8-13-36-PM.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/HL5Kxgz6/Whats-App-Image-2025-02-11-at-5-57-00-PM-1.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/44Q8qn74/Whats-App-Image-2025-02-11-at-6-03-35-PM.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/L5rLhrNV/Whats-App-Image-2025-02-11-at-5-57-01-PM-3.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/VLCX2kkZ/Whats-App-Image-2025-02-11-at-5-57-01-PM-2.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/pdqjK9sr/Whats-App-Image-2025-02-11-at-8-13-41-PM-5.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/QVGKjcd4/Whats-App-Image-2025-02-11-at-8-13-41-PM-4.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/Vkw4RCWW/Whats-App-Image-2025-02-11-at-8-13-41-PM-3.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/C19sfBKD/Whats-App-Image-2025-02-11-at-8-13-41-PM-2.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/pVnZMZ0B/Whats-App-Image-2025-02-11-at-8-13-41-PM-1.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/q7RsbXhy/Whats-App-Image-2025-02-11-at-8-13-41-PM.jpg" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/wMhLywZ8/Whats-App-Image-2025-02-11-at-8-13-40-PM-1.jpg" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/yYy07r00/Whats-App-Image-2025-02-11-at-8-13-40-PM.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.postimg.cc/HkghjKJz/Whats-App-Image-2025-02-11-at-5-56-55-PM-1.jpg" class="d-block w-100" alt="Imagen 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselImages" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselImages" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+        
+        <!-- Carrusel de Videos -->
+        <div id="carouselVideos" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <iframe class="d-block w-100" height="315" src="https://www.youtube.com/embed/7amrN7jmKX8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="d-block w-100" height="315" src="https://www.youtube.com/embed/IDIb3sa5koM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="d-block w-100" height="315" src="https://www.youtube.com/embed/pu-fqMGfTIw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="d-block w-100" height="315" src="https://youtube.com/embed/WhYg8HUbVG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="d-block w-100" height="315" src="https://youtube.com/embed/MZC6SNRQCws" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="d-block w-100" height="315" src="https://youtube.com/embed/iyOEu3F1l18" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="d-block w-100" height="315" src="https://youtube.com/embed/6JYyMvEpYko" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="d-block w-100" height="315" src="https://youtube.com/embed/m5cjQIkGTxQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="d-block w-100" height="315" src="https://youtube.com/embed/t9edo5ZnaLI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe class="d-block w-100" height="315" src="https://youtube.com/embed/ziQy_M5-5og" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselVideos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselVideos" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>        
+    </section>
+    
+    
+    <!-- Sección Nuestros Viajes -->
+    <section id="nuestros-viajes" class="container mt-4 text-center">
+        <h2 class="text-center pb-4">Nuestros Viajes</h2>        
+        <div class="row pt-4">
+            <!-- Primer acordeón (7 viajes) -->
+            <div class="col-md-6">
+                <div id="accordion-left">
+                    <!-- Viajes 1 al 7 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Primer viaje - Lunahuaná
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion-left">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/5ypNFRdT/20220108-074552.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue nuestro primer viaje juntos, pasamos por varios juegos de aventura como el paseo en cuatrimoto, como el canotaje y el canopy, la pasamos bien juntos.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Segundo viaje - San Martín
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion-left">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/C1nMRjj0/20220227-182518.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue sin duda un antes y un después para nosotros y nuestra relación, fue un viaje con muchas cosas nuevas, conocimos varios lugares entre las profundidades de la selva y las áreas urbanas, recorrimos Juanjui, Picota, Bellavista, Lamas, Tarapoto, Moyobamba y Rioja.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Tercer viaje - Máncora
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion-left">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/90B60MNV/20220318-162845.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Conocimos las playas de Máncora y Vichayito, pasamos muchos momentos juntos, nos divertimos y la pasamos frente al mar con una hermosa vista al atardecer.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Cuarto viaje - Huancaya
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion-left">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/RFYW6skg/20220415-094810.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue nuestro primer viaje a altura, aunque el inicio te afectó logramos adaptarnos y disfrutas del río y laguna, nos acompañamos y nos dimos un paseo de regreso por el puente más alto del Perú, comimos comida típica y aunque llegamos cansadísimos disfrutamos el viaje.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingFive">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Quinto viaje - Tingo María
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion-left">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/QMsn9s1d/20220729-094903.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue la primera vez que fuimos a un lugar en la selva diferente a San Martín, conocimos la cueva de las lechuzas y la gastronomía de la zona, pasamos por Pasco y pasamos del frío al calor de la selva, pese a todos los inconvenientes para llegar y a las descordinaciones lo disfrutamos y conocimos cascadas donde nos bañamos.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingSix">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    Sexto viaje - Canta
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion-left">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/t4gQTggX/20230122-130158-1.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue el primero de los viajes que los planeamos con poco tiempo, nos animamos y lo logramos, llegamos por la noche y aunque nos costó encontrar un lugar donde quedaarnos lo hicimos y lo disfrutamos mucho, ante tanto frío no faltó nuestro avbrigo, amanecimos contentos y a las horas nos encontramos con Toto y Patty, aprovechamos en subir a la montaña y pasear por la laguna.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingSeven">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                    Séptimo viaje - Ica
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion-left">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/X744wZFw/Whats-App-Image-2025-02-11-at-6-33-57-PM.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue la primera vez que viajamos con mi familia, aunque pasamos por un carro que se malogro, con falta de ropa para la playa y con perder mi celular, nos acompañamos y ayudamos, nos volvimos agotados pero más unidos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Segundo acordeón (7 viajes) -->
+            <div class="col-md-6">
+                <div id="accordion-right">
+                    <!-- Viajes 8 al 14 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingEight">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                    Octavo viaje - Canta
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion-right">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/Y0tH690n/IMG-1014.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue la segunda vez en Canta, está vez nos quedamos abajo y aprovechamos en conocer mejor la zona, probamos las comidas típicas, compramos cosas para llevar, entre ellas un peluchito y fue un momento importante para fortalecer nuestra relación.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingNine">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                    Noveno viaje - Chimbote
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion-right">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/BvS6b9VT/IMG-2814.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fuimos por los pasajes sin saber a dónde ir, nos animamos por las playas y conocimos una de las más bellas del Perú, fue un viaje tranquilo y relajante.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                    Décimo viaje - Punta Hermosa
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion-right">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/nzpmD446/Whats-App-Image-2025-02-11-at-8-25-26-PM.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue la primera vez que compartimos en una casa de campo, pudimos disrutar de la piscina y jugar, aunque el calor no nos dejó dormir bien, pudimos pasar un bonito fin de semana.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingEleven">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                                    Undécimo viaje - San Martín
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordion-right">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/yd9GkP80/Whats-App-Image-2025-02-11-at-5-56-55-PM.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue la primera vez que pudimos celebrar un aniversario y que mejor lugar que donde todo empezó, pude conocer nuestro terreno, planificamos como mejorarlo, paseamos con Sandy y los niños, comimos nuevas cosas deliciosas y pasamos un lindo aniversario en un glamping con una hermosa vista y conocimos el salto de la bruja, y lo más importante esta vez no perdimos el vuelo.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTwelve">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                                    Duodécimo viaje - Huaraz
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordion-right">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/x1xh78ZN/Whats-App-Image-2025-02-11-at-6-03-53-PM.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue la primera vez que conociste la sierra fuera de Lima, conocimos la laguna congelada e hicimos la escalada al nevado San Mateo, con todo el esfuerzo llegamos hasta la zona congelada y antes de irnos probamos comida deliciosa.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingThirteen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                                    Decimotercer viaje - Huancayo
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#accordion-right">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/1RbtxRLT/Whats-App-Image-2025-02-11-at-5-57-00-PM.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Fue el viaaje más inesperado, salió de pronto y aunque fue poco tiempo pudimos conocer un poco de la ciudad y de la ciudad de Jauja, la laguna de Paca y la comida de la zna, regresamos cansados pero felices.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingFourteen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                                    Decimocuarto viaje - Huarmey
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen" data-parent="#accordion-right">
+                            <div class="card-body text-center">
+                                <img class="card-img-top" src="https://i.postimg.cc/pdPMN3W3/Whats-App-Image-2025-02-11-at-5-57-01-PM.jpg" alt="Imagen del viaje">
+                                <p class="card-text">Ha sido nuestro último viaje y nuestra primera vez que recibimos año nuevo fuera de Lima, pudimos empezar el año nuevo juntos cerca al mar.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>    
+    </section>
+
+    <div id="foto-y-pie"></div>
+    
+    <section id="anecdotas" class="container mt-4">
+        <div class="book-container">
+            <div class="book">
+                <div class="cover left-cover"></div>
+                <div class="page left">
+                    <h3 class="title-diario">Nuestras Anécdotas</h3>
+                    <div class="image-container-old">
+                        <img src="https://i.postimg.cc/bvzzhFnb/Whats-App-Image-2025-02-04-at-4-37-35-PM.jpg" alt="Imagen evocadora" class="image-with-filter">
+                    </div>
+                    <div class="Frase-inf">
+                        <p class="text-center parisienne-regular">Recuerda nuestras mejores anécdotas juntos</p>
+                    </div>
+                </div>
+                <div class="page right">
+                    <div id="content" class="p-3 parissiene-regular">
+                        <div class="img-cont-right"><!-- Anécdotas dinámicas aquí --></div>
+                        
+                    </div>
+                    <div class="buttons">
+                        <button id="prevPage" class="btn btn-home">← Página anterior</button>
+                        <button id="nextPage" class="btn btn-home">Siguiente página →</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Sonido al cambiar de página -->
+        <audio id="page-sound" src="https://cdn.pixabay.com/audio/2023/10/22/audio_5e9c63292e.mp3" preload="auto"></audio>
+    </section>
+
+    <section id="destino" class="container mt-4">
+        <h2>Nuestro Nuevo Destino</h2>
+    
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-primary ciudad-btn" data-ciudad="Lima">Lima</button>
+            <button class="btn btn-primary ciudad-btn" data-ciudad="Medellín">Medellín</button>
+            <button class="btn btn-primary ciudad-btn" data-ciudad="Santa Marta">Santa Marta</button>
+            <button class="btn btn-primary ciudad-btn" data-ciudad="Tayrona">Tayrona</button>
+            <button class="btn btn-primary ciudad-btn" data-ciudad="Barranquilla">Barranquilla</button>
+            <button class="btn btn-primary ciudad-btn" data-ciudad="Cartagena">Cartagena</button>
+            <button class="btn btn-primary ciudad-btn" data-ciudad="Barú">Barú</button>
+            <button class="btn btn-primary ciudad-btn" data-ciudad="San Andrés">San Andrés</button>
+            <button class="btn btn-primary ciudad-btn" data-ciudad="Bogotá">Bogotá</button>
+        </div>
+    
+        <div id="mapa-ruta" style="width: 100%; height: 500px; margin-top: 20px;"></div>
+    
+        <div id="descripcion-ciudad" class="info-box d-none">
+            <span class="close-btn">✖</span>
+            <h3 id="ciudad-nombre"></h3>
+            <img id="ciudad-imagen" src="" alt="Imagen de la ciudad" class="img-fluid">
+            <p id="ciudad-descripcion"></p>
+        </div>
+        <!-- Alerta personalizada de avión -->
+        <div id="custom-alert-avion" class="custom-alert-avion">
+            <div class="custom-alert-avion-content">
+                <div id="avion-volando">
+                    <img src="   https://cdn-icons-png.flaticon.com/512/1358/1358770.png " alt="Avión volando" id="avion-img">
+                </div>
+                <p id="alert-message-avion">¡Viaje completado con éxito. Hasta una nueva aventura juntos amor 💖!</p>
+                <div id="celebracion-icono">
+                    <span role="img" aria-label="Celebración">🎊</span>
+                </div>
+                <button id="alert-button-avion" onclick="cerrarAlertaAvion()">Cerrar</button>
+            </div>
+        </div>
+    </section>
+    
+    
+    <footer class="text-center p-3">
+        <p>&copy; 2025 Jesús Jiménez. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Tu script principal -->
+    <script defer src="js/main.js" defer></script>
+    <script>
+        document.getElementById("viajes-modal").addEventListener("shown.bs.modal", function () {
+            if (typeof inicializarMapa === "function") {
+                inicializarMapa();
+            }
+        });
+    </script>
+</body>
+</html>
